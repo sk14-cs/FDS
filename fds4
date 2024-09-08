@@ -1,0 +1,68 @@
+def selection_sort(marks):
+    for i in range(len(marks)):
+        min=i
+        for j in range(i+1,len(marks)):
+            if marks[min]>marks[j]:
+                min=j
+        marks[i],marks[min]=marks[min],marks[i]
+    print("marks of students after performing selection sort on the list:")
+    for i in range(len(marks)):
+        print(marks[i])
+
+#function for bubbel sorting
+def bubble_sort(marks):
+    n=len(marks)
+    for i in range(n-1):
+        for j in range(0,n-1-i):
+            if marks[j]>marks[j+1]:
+                marks[j],marks[j+1]=marks[j+1],marks[j]
+    print("marks of students after performing bubble sort on the list:")
+    for i in range(len(marks)):
+          print(marks[i])
+
+def top_five_marks(marks):
+    print("top",len(marks),"marks are")
+    print(*marks[::-1],sep="\n")
+
+marks=[]
+n=int(input("enter number of student whose marks are to be displayed:"))
+print("enter marks for",n,"students :")
+for i in range(0,n):
+    ele=float(input())
+    marks.append(ele)
+print("the marks of",n,"students are:")
+print(marks)
+flag=1;
+while flag==1:
+    print("\n\n-----------------MENU---------------\n")
+    print("1.selection sort")
+    print("2.bubble sort")
+    print("3.EXIT")
+    ch=int(input("enter your choice"))
+    if ch==1:
+        selection_sort(marks)
+        a=input("\nDo you want to display top marks from the list (yes/no) : ")
+        if a=='yes':
+            top_five_marks(marks)
+        else:
+            print("\nThanks for using this program!")
+            flag=0
+    elif ch==2:
+        bubble_sort(marks)
+        a=input("\nDo you want to display top marks from the list (yes/no) : ")
+        if a=='yes':
+            top_five_marks(marks)
+        else:
+            print("\nThanks for using this program!")
+            flag=0
+    elif ch==3:
+        print("EXIT")
+        print("thanks for uisng this program")
+    else:
+        print("wrong choice")
+        a=input("\nDo you want to display top marks from the list (yes/no) : ")
+        if a=='yes':
+            top_five_marks(marks)
+        else:
+            print("\nThanks for using this program!")
+            flag=0
