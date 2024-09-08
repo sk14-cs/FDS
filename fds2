@@ -1,0 +1,64 @@
+def ln(element, list1):
+    for i in range(len(list1)):
+        if element == list1[i]:
+            return True
+    return False
+
+def first_appe(string, substring):
+    for i in range(len(string) - len(substring) + 1):
+        if string[i:i+len(substring)] == substring:
+            return i
+    return -1
+
+def revstr(string):
+    revstr = ""
+    for i in range(len(string)):
+        revstr = string[i] + revstr
+    return revstr
+
+def len_of_string(str1, s):
+    count = 0
+    for i in range(len(str1)):
+        if s == str1[i]:
+            count += 1
+    return count
+
+def max_length(splitL):
+    len1 = 0
+    new_str2 = ""
+    for i in range(len(splitL)):
+        if len1 < len(splitL[i]):
+            len1 = len(splitL[i])
+            new_str2 = splitL[i]
+    return len1, new_str2
+
+def polindrome(str):
+    return str == revstr(str)
+
+str1 = input("Enter a string: ")
+if polindrome(str1):
+    print("The given string is a palindrome")
+else:
+    print("Entered string is not a palindrome")
+
+if revstr(str1) == str1:
+    print("Entered string is a palindrome (using reverse string method)")
+else:
+    print("Entered string is not a palindrome (using reverse string method)")
+
+str2 = input("Enter a sentence to check the maximum length of a word: ")
+splitL = str2.split()
+length, word = max_length(splitL)
+print("Length:", length, "Word:", word)
+
+str3 = input("Enter a string to check the count of a particular character: ")
+ch = input("Enter character: ")
+print("Entered character count is:", len_of_string(str3, ch))
+
+str4 = input("Enter a string to check the first appearance of a substring: ")
+substring = input("Enter substring: ")
+index = first_appe(str4, substring)
+if index != -1:
+    print(substring, "is at index:", index)
+else:
+    print(substring, "is not found in the string")
